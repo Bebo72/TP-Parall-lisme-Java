@@ -17,7 +17,7 @@ public class Counter {
   /**
    * Decrements the counter
    */
-  public synchronized void dec() {
+  public void dec() {
     count--;
   }
 
@@ -32,7 +32,7 @@ public class Counter {
   /**
    * Increments the counter
    */
-  public synchronized void inc() {
+  public void inc() {
     count++;
   }
 
