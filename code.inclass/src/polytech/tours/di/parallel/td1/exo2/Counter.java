@@ -2,7 +2,7 @@ package polytech.tours.di.parallel.td1.exo2;
 
 /**
  * Implements a simple counter
- *
+ * 
  * @author Jorge E. Mendoza (dev@jorge-mendoza.com)
  * @version %I%, %G%
  *
@@ -16,25 +16,15 @@ public class Counter {
    */
   private int count = 0;
 
-  private Lock lock = new Lock();
-
   /**
    * Decrements the counter
    */
-  public void dec() {
-    try {
-      lock.lock();
-      count--;
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    } finally {
-      lock.unlock(); // Même en cas de problème il va delock
-    }
+  public synchronized void dec() {
+    count--;
   }
 
   /**
-   *
+   * 
    * @return the count
    */
   public int getCount() {
@@ -44,14 +34,8 @@ public class Counter {
   /**
    * Increments the counter
    */
-  public void inc() {
-    try {
-      lock.lock();
-      count++;
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    } finally {
-      lock.unlock(); // Même en cas de problème il va delock
-    }
+  public synchronized void inc() {
+    count++;
   }
+
 }
